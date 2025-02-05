@@ -98,9 +98,15 @@ export default function App() {
 				</Button>
 			</div>
 
-			{/* We'll show the form to split a bill just after select a friend */}
+			{/* We'll show the form to split a bill just after select a friend,
+                but we have to make this component unic between each friend.
+                It's because when we fill up the form for one friend and then select nother friend,
+                all the information filled will be keept.
+                To fix that we just need to include an unique key prop. Problem solved.
+            */}
 			{selectedFriend && (
 				<FormSplitBill
+					key={selectedFriend.id}
 					selectedFriend={selectedFriend}
 					onSplitBill={handleSplitBill}
 				/>
